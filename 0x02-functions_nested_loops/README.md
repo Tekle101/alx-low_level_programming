@@ -1,1 +1,1 @@
-My first readme function nested loop
+function in c

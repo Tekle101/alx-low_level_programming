@@ -2,13 +2,13 @@ include "main.h"
 #include <stdio.h>
 
 /**
- * add -prints add two numbers
- *@i: print int i
- *@k: print int k
- * Return: Always 0.
+ * add - a function that adds two integers and returns the result
+ * @one: first number input
+ * @two: second number input
+ * Return: one + two
  */
 
-int add(int i, int k)
+int add(int one, int two)
 {
-return (i + k);
+return (one + two);
 }

@@ -1,30 +1,47 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
- *_strdup - allocate a string.
- *@str: string.
- *Return: pointer to string if success.
-*/
-
-char *_strdup(char *str)
+ * string_nconcat -  concatenates two strings
+ * @s1: string1
+ * @s2: string2
+ * @n: n bytes of string 2
+ *
+ * Return: Pointer to allocated memory of s1 + nbytes of s2
+ */
+char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int i;
-	char *str1;
+	unsigned int l1, l2, i, j;
+	char *s;
+	char *nul = "";
 
-	if (str == NULL)
-		return (NULL);
+	if (s1 == NULL)
+		s1 = nul;
+	if (s2 == NULL)
+		s2 = nul;
 
-	for (i = 0; str[i]; i++)
-	;
-	i++;
-	str1 = malloc(sizeof(char) * i);
+	l1 = 0, l2 = 0;
+	while (*(s1 + l1))
+		l1++;
+	while (*(s2 + l2))
+		l2++;
 
-	if (str1 == NULL)
-		return (NULL);
+	if (n < l2)
+		l2 = n;
 
-	for (i = 0; str[i] != '\0'; i++)
-		str1[i] = str[i];
-	str1[i] = '\0';
-	return (str1);
+	s = malloc(sizeof(char) * (l1 + l2 + 1));
+
+	if (s == 0)
+		return (0);
+
+	for (i = 0; i < l1; i++)
+		*(s + i) = *(s1 + i);
+
+	for (i = 0, j = l1; i < l2; j++, i++)
+		*(s + j) = *(s2 + i);
+
+	*(s + j) = '\0';
+
+	return (s);
 }
